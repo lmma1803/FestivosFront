@@ -1,0 +1,23 @@
+.contenedor-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.formulario-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultado-card {
+  margin: 1rem;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  color: #05346b;
+}

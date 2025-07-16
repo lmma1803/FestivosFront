@@ -1,0 +1,53 @@
+<div class="contenedor-principal">
+  <mat-card class="card-seccion">
+    <mat-card-title class="formulario-horizontal">Verificar si una fecha es festivo</mat-card-title>
+    <mat-card-content class="formulario-horizontal">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Elegir fecha</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="fechaVerificar">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="verificar()">
+        Verificar
+      </button>
+    </mat-card-content>
+
+    <mat-card *ngIf="esFestivo"
+        class="resultado-card">
+      <mat-card-content>
+        <h3>{{ esFestivo }}</h3>
+      </mat-card-content>
+    </mat-card>
+  </mat-card>
+
+  <mat-card class="card-seccion">
+    <mat-card-title class="formulario-horizontal">Consultar festivos por año</mat-card-title>
+    <mat-card-content class="formulario-horizontal">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Año</mat-label>
+        <input matInput [(ngModel)]="anioBusqueda">
+      </mat-form-field>
+
+      <button mat-raised-button color="accent" (click)="obtener()">
+        Obtener
+      </button>
+
+    </mat-card-content>
+
+    <ngx-datatable *ngIf="festivos.length > 0" class="material"
+                   [rows]="festivos"
+                   [columns]="[
+                     { name: 'Nombre del festivo', prop: 'nombre' },
+                     { name: 'Fecha', prop: 'fecha' }
+                   ]"
+                   [headerHeight]="50"
+                   [rowHeight]="'auto'"
+                   [limit]="10">
+    </ngx-datatable>
+  </mat-card>
+
+</div>
